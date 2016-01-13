@@ -31,8 +31,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>
 
 if( !defined( 'ABSPATH' ) ) exit;
 
-define( 'Acfav_URL', untrailingslashit(plugin_dir_url( __FILE__ )) );
-define( 'Acfav_PATH', dirname(__FILE__) );
+define( 'AcfAV_URL', plugin_dir_url( __FILE__ ) );
+define( 'AcfAV_PATH', plugin_dir_path(__FILE__) );
 
 add_action( 'plugins_loaded', 'acfav_init_plugin' );
 add_action( 'after_setup_theme', 'acfav_add_image_size', 15 );
@@ -43,8 +43,8 @@ function acfav_init_plugin() {
 		add_action( 'admin_notices', 'acfav_dependency_not_found' );
 		return;
 	}else{
-		include( Acfav_PATH . '/includes/usermeta.php' );
-		include( Acfav_PATH . '/fields/avatar.php' );
+		include( AcfAV_PATH . '/includes/usermeta.php' );
+		include( AcfAV_PATH . '/fields/avatar.php' );
 	}
 
 	if ( is_admin() && !get_option( 'show_avatars' ) ) {
@@ -78,6 +78,6 @@ function acfav_enqueue_scripts_and_styles() {
 	$screen = get_current_screen();
 
 	if ( $screen && ($screen->id == 'profile' || $screen->id == 'user-edit') ) {
-		wp_enqueue_style( 'acf-avatar', Acfav_URL . '/assets/acf-avatar.css', array(), '1.0' );
+		wp_enqueue_style( 'acf-avatar', AcfAV_URL . '/assets/acf-avatar.css', array(), '1.0' );
 	}
 }
