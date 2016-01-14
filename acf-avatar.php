@@ -71,7 +71,16 @@ function acfav_avatars_disabled() {
 }
 
 function acfav_add_image_size() {
-	add_image_size( 'avatar', 75, 75, true );
+	$size = array(
+		'avatar',
+		75,
+		75,
+		true
+	);
+
+	$size = apply_filters( 'acf-avatar-image-size', $size );
+
+	if ( $size ) add_image_size( $size[0], $size[1], $size[2], $size[3] );
 }
 
 function acfav_enqueue_scripts_and_styles() {
