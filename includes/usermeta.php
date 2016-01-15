@@ -8,7 +8,7 @@ function acfav_get_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
 	// Do not filter avatars on the discussion page
 	if ( is_admin() ) {
 		$screen = get_current_screen();
-		if ( $screen->id = 'options-discussion' ) return $avatar;
+		if ( $screen->id == 'options-discussion' ) return $avatar;
 	}
 
 	$user = false;
@@ -48,7 +48,7 @@ function acfav_get_avatar_data( $args, $id_or_email ) {
 	// Do not filter avatars on the discussion page
 	if ( is_admin() ) {
 		$screen = get_current_screen();
-		if ( $screen->id = 'options-discussion' ) return $args;
+		if ( $screen->id == 'options-discussion' ) return $args;
 	}
 
 	$user = false;
