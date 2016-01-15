@@ -3,7 +3,7 @@
 Plugin Name: Advanced Custom Fields - Avatar
 Description: Select images with Advanced Custom Fields to use as an avatar on your website.
 Plugin URI:  http://www.radgh.com/
-Version:     1.0.0
+Version:     1.0.1
 Author:      Radley Sustaire &lt;radleygh@gmail.com&gt;
 Author URI:  radgh.com
 License:     GPL2

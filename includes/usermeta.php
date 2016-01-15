@@ -3,6 +3,14 @@ add_filter( 'get_avatar', 'acfav_get_avatar', 10, 5 );
 add_filter( 'get_avatar_data', 'acfav_get_avatar_data', 10, 2 );
 
 function acfav_get_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
+	if ( !$id_or_email ) return $avatar;
+
+	// Do not filter avatars on the discussion page
+	if ( is_admin() ) {
+		$screen = get_current_screen();
+		if ( $screen->id = 'options-discussion' ) return $avatar;
+	}
+
 	$user = false;
 
 	// Get user by id or email
@@ -35,6 +43,14 @@ function acfav_get_avatar( $avatar, $id_or_email, $size, $default, $alt ) {
 
 
 function acfav_get_avatar_data( $args, $id_or_email ) {
+	if ( !$id_or_email ) return $args;
+
+	// Do not filter avatars on the discussion page
+	if ( is_admin() ) {
+		$screen = get_current_screen();
+		if ( $screen->id = 'options-discussion' ) return $args;
+	}
+
 	$user = false;
 
 	// Get user by id or email
