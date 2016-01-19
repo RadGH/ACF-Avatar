@@ -1,1 +1,7 @@
 table.form-table tr.user-profile-picture { display: none; }
+
+#revisionsdiv img {
+	max-width: 60px;
+	height: auto;
+	margin-right: 10px;
+}
