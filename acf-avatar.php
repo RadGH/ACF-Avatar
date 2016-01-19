@@ -36,7 +36,6 @@ define( 'AcfAV_PATH', plugin_dir_path(__FILE__) );
 
 add_action( 'plugins_loaded', 'acfav_init_plugin' );
 add_action( 'after_setup_theme', 'acfav_add_image_size', 15 );
-add_action( 'admin_enqueue_scripts', 'acfav_enqueue_scripts_and_styles' );
 
 function acfav_init_plugin() {
 	if ( !function_exists('acf') ) {
@@ -44,6 +43,7 @@ function acfav_init_plugin() {
 		return;
 	}else{
 		include( AcfAV_PATH . '/includes/usermeta.php' );
+		include( AcfAV_PATH . '/includes/enqueue.php' );
 		include( AcfAV_PATH . '/fields/avatar.php' );
 	}
 
@@ -83,10 +83,3 @@ function acfav_add_image_size() {
 	if ( $size ) add_image_size( $size[0], $size[1], $size[2], $size[3] );
 }
 
-function acfav_enqueue_scripts_and_styles() {
-	$screen = get_current_screen();
-
-	if ( $screen && ($screen->id == 'profile' || $screen->id == 'user-edit') ) {
-		wp_enqueue_style( 'acf-avatar', AcfAV_URL . '/assets/acf-avatar.css', array(), '1.0' );
-	}
-}
