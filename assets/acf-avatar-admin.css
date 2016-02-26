@@ -5,3 +5,8 @@ table.form-table tr.user-profile-picture { display: none; }
 	height: auto;
 	margin-right: 10px;
 }
+
+.column-username img.avatar.photo {
+	max-width: 32px;
+	max-height: 32px;
+}
