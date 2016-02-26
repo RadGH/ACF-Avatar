@@ -78,7 +78,7 @@ function acfav_get_avatar_data( $args, $id_or_email ) {
 	$image_url  = wp_get_attachment_image_src( $image_id, 'avatar' ); // Set image size by name
 
 	if ( $image_url ) {
-		$args['size'] = filesize( $image_url );
+		$args['size'] = @filesize( $image_url[0] );
 		$args['found_avatar'] = true;
 
 		$args['url'] = $image_url[0];
